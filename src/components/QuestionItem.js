@@ -31,13 +31,17 @@ export default class QuestionOne extends React.Component {
     }
     
     render () {
+
         return (
             <form className="question-block" onSubmit={this.handleSubmit}>
                 <div className="question-block__question">{this.props.question}</div>
                 {this.props.questionState[this.props.questionNumber] && this.props.variants.map((item, index) => (
-                    <p key={index}><input name="question" type="radio" value={index} onChange={this.handleChange} /> {item}</p>
+                    <label key={index} htmlFor={'opt' + index} className="radio">
+                        <input type="radio" name="question" id={'opt' + index} className="hidden" value={index} onChange={this.handleChange} />
+                        <span className="label"></span>{item}
+                    </label>
                 ))}
-                {this.props.questionState[this.props.questionNumber] && <p><input type="submit" value="Отправить" /></p>}
+                {this.props.questionState[this.props.questionNumber] && <p><button type="submit" className="button">Отправить</button> </p>}
             </form>
         )
     }
