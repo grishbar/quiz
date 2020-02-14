@@ -15,6 +15,44 @@ import {
 } from "react-router-dom";
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.update = this.update.bind(this);
+    this.updateAnswers = this.updateAnswers.bind(this);
+    this.updateQuestionState = this.updateQuestionState.bind(this);
+    //window.setInterval(this.update, 5000);
+    this.state={answers: [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]], isIntervalSet: false,
+       questionState: {1: true, 2: true, 3: true, 4: true, 5: true}};
+  }
+
+  async update() {
+    const response = await fetch('./question-data.json');
+    const questionData = await response.json();
+    let newAnswers = [];
+    for (let i = 0; i < questionData.length; i++) {
+      newAnswers.push(questionData[i]['answers']);
+    }
+    this.setState({
+      answers: newAnswers,
+    });
+  }
+
+  updateAnswers(questionNumber, choosedAnswer) {
+    let newAnswers = this.state.answers;
+    newAnswers[questionNumber - 1][choosedAnswer] += 1;
+    this.setState({
+      answers: newAnswers,
+    });
+  }
+
+  updateQuestionState(question, state){
+    let tempState = this.state.questionState;
+    tempState[question] = state;
+    this.setState({
+      questionState: tempState,
+    });
+  }
+
   render () {
     return (
       <Router>
@@ -46,19 +84,24 @@ export default class App extends React.Component {
               <AdminPage />
             </Route>
             <Route path="/question1">
-              <QuestionOne />
+              <QuestionOne answers={this.state.answers[0]} updateQuestionState={this.updateQuestionState}
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
             </Route>
             <Route path="/question2">
-              <QuestionTwo />
+              <QuestionTwo answers={this.state.answers[1]} updateQuestionState={this.updateQuestionState}
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
             </Route>
             <Route path="/question3">
-              <QuestionThree />
+              <QuestionThree answers={this.state.answers[2]} updateQuestionState={this.updateQuestionState}
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
             </Route>
             <Route path="/question4">
-              <QuestionFour />
+              <QuestionFour answers={this.state.answers[3]} updateQuestionState={this.updateQuestionState}
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
             </Route>
             <Route path="/question5">
-              <QuestionFive />
+              <QuestionFive answers={this.state.answers[4]} updateQuestionState={this.updateQuestionState}
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
             </Route>
             <Route path="/">
               <StartPage />

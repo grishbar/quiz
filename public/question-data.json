@@ -1,0 +1,27 @@
+[
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [1, 2, 3]
+    },
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [2, 2, 2]
+    },
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [3, 2, 1]
+    },
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [4, 4, 4]
+    },
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [5, 0, 0]
+    }
+]
