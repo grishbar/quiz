@@ -164,3 +164,23 @@ input[type="radio"]:checked + .label:after {
   background-color: #555555;
   color: white;
 }
+
+.admin-block {
+  margin-top: 40px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-block__item {
+  margin-bottom: 20px;
+}
+
+.admin-block__question {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}

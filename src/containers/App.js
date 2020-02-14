@@ -18,11 +18,39 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.update = this.update.bind(this);
+    this.startQuestion = this.startQuestion.bind(this);
+    this.endQuestion = this.endQuestion.bind(this);
+    this.resetQuestion = this.resetQuestion.bind(this);
     this.updateAnswers = this.updateAnswers.bind(this);
     this.updateQuestionState = this.updateQuestionState.bind(this);
     //window.setInterval(this.update, 5000);
     this.state={answers: [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]], isIntervalSet: false,
-       questionState: {1: true, 2: true, 3: true, 4: true, 5: true}};
+       questionState: {1: true, 2: true, 3: true, 4: true, 5: true}, questionData: [
+             {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [1, 2, 3]
+    },
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [2, 2, 2]
+    },
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [3, 2, 1]
+    },
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [4, 4, 4]
+    },
+    {
+        "isActive": false,
+        "isFinished": false,
+        "answers": [5, 0, 0]
+    }]};
   }
 
   async update() {
@@ -34,6 +62,7 @@ export default class App extends React.Component {
     }
     this.setState({
       answers: newAnswers,
+      questionData: questionData
     });
   }
 
@@ -51,6 +80,39 @@ export default class App extends React.Component {
     this.setState({
       questionState: tempState,
     });
+  }
+
+  async startQuestion(questionNumber) {
+    let tempQuestionData = this.state.questionData;
+    tempQuestionData[questionNumber - 1]['isActive'] = true;
+    this.setState({
+      questionData: tempQuestionData
+    });
+    console.log(tempQuestionData);
+    //await fetch('./question-data.json', {method: 'POST', body: tempQuestionData});
+  }
+
+  async endQuestion(questionNumber) {
+    let tempQuestionData = this.state.questionData;
+    tempQuestionData[questionNumber - 1]['isActive'] = false;
+    tempQuestionData[questionNumber - 1]['isFinished'] = true;
+    this.setState({
+      questionData: tempQuestionData
+    });
+    console.log(tempQuestionData);
+    //await fetch('./question-data.json', {method: 'POST', body: tempQuestionData});
+  }
+
+  async resetQuestion(questionNumber) {
+    let tempQuestionData = this.state.questionData;
+    tempQuestionData[questionNumber - 1]['isActive'] = true;
+    tempQuestionData[questionNumber - 1]['isFinished'] = false;
+    tempQuestionData[questionNumber - 1]['answers'] = [0, 0, 0];
+    this.setState({
+      questionData: tempQuestionData
+    });
+    console.log(tempQuestionData);
+    //await fetch('./question-data.json', {method: 'POST', body: tempQuestionData});
   }
 
   render () {
@@ -81,7 +143,7 @@ export default class App extends React.Component {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/admin">
-              <AdminPage />
+              <AdminPage startQuestion={this.startQuestion} endQuestion={this.endQuestion} resetQuestion={this.resetQuestion} />
             </Route>
             <Route path="/question1">
               <QuestionOne answers={this.state.answers[0]} updateQuestionState={this.updateQuestionState}
