@@ -1,6 +1,10 @@
 {
   "name": "webapp",
   "version": "1.0.0",
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.16.0"
+  },
   "scripts": {
     "client": "cd client && npm start",
     "server": "node app.js",
