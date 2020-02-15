@@ -7,7 +7,7 @@ var app = express();
 var jsonParser = bodyParser.json();
 const port = process.env.PORT || 3001;
  
-app.use(express.static(__dirname + "/public"));
+//app.use(express.static(__dirname + "/public"));
 // получение списка данных
 app.get("/api/question-data", function(req, res){
     var content = fs.readFileSync("question-data.json", "utf8");
