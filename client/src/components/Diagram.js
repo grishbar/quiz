@@ -26,7 +26,7 @@ export default class Example extends React.Component {
     const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
       <div className="diagramm">
-        <XYPlot xType="ordinal" width={Math.max(window.innerWidth/2, 300)} height={500} xDistance={100}>
+        <XYPlot xType="ordinal" width={window.innerWidth/2} height={500} xDistance={100}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
@@ -34,6 +34,11 @@ export default class Example extends React.Component {
           <BarSeries data={blueData} />
           <LabelSeries data={labelData} getLabel={d => d.x} />
         </XYPlot>
+        <div className="diagramm-legends">
+          <div className="diagramm-legends__item">1 - {this.props.variants[0]}</div>
+          <div className="diagramm-legends__item">2 - {this.props.variants[1]}</div>
+          <div className="diagramm-legends__item">3 - {this.props.variants[2]}</div>
+        </div>
       </div>
     );
   }

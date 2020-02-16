@@ -157,23 +157,28 @@ export default class App extends React.Component {
             </Route>
             <Route path="/question1">
               <QuestionOne answers={this.state.answers[0]} updateQuestionState={this.updateQuestionState}
-              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers}
+              isActive={this.state.questionData[0]["isActive"]} isFinished={this.state.questionData[0]["isFinished"]} />
             </Route>
             <Route path="/question2">
               <QuestionTwo answers={this.state.answers[1]} updateQuestionState={this.updateQuestionState}
-              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers}
+              isActive={this.state.questionData[1]["isActive"]} isFinished={this.state.questionData[1]["isFinished"]} />
             </Route>
             <Route path="/question3">
               <QuestionThree answers={this.state.answers[2]} updateQuestionState={this.updateQuestionState}
-              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers}
+              isActive={this.state.questionData[2]["isActive"]} isFinished={this.state.questionData[2]["isFinished"]} />
             </Route>
             <Route path="/question4">
               <QuestionFour answers={this.state.answers[3]} updateQuestionState={this.updateQuestionState}
-              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers}
+              isActive={this.state.questionData[3]["isActive"]} isFinished={this.state.questionData[3]["isFinished"]} />
             </Route>
             <Route path="/question5">
               <QuestionFive answers={this.state.answers[4]} updateQuestionState={this.updateQuestionState}
-              questionState={this.state.questionState} updateAnswers={this.updateAnswers} />
+              questionState={this.state.questionState} updateAnswers={this.updateAnswers}
+              isActive={this.state.questionData[4]["isActive"]} isFinished={this.state.questionData[4]["isFinished"]} />
             </Route>
             <Route path="/">
               <StartPage />
