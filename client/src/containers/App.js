@@ -93,36 +93,42 @@ export default class App extends React.Component {
   }
 
   async startQuestion(questionNumber) {
-    let tempQuestionData = this.state.questionData;
-    tempQuestionData[questionNumber - 1]['isActive'] = true;
+    const response = await fetch('/api/question-data/change-isactive', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({questionNumber: questionNumber})});
+    const questionData = await response.json();
     this.setState({
-      questionData: tempQuestionData
+      questionData: questionData,
     });
-    console.log(tempQuestionData);
-    //await fetch('./question-data.json', {method: 'POST', body: tempQuestionData});
   }
 
   async endQuestion(questionNumber) {
-    let tempQuestionData = this.state.questionData;
-    tempQuestionData[questionNumber - 1]['isActive'] = false;
-    tempQuestionData[questionNumber - 1]['isFinished'] = true;
+    const response = await fetch('/api/question-data/change-isfinished', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({questionNumber: questionNumber})});
+    const questionData = await response.json();
     this.setState({
-      questionData: tempQuestionData
+      questionData: questionData,
     });
-    console.log(tempQuestionData);
-    //await fetch('./question-data.json', {method: 'POST', body: tempQuestionData});
   }
 
   async resetQuestion(questionNumber) {
-    let tempQuestionData = this.state.questionData;
-    tempQuestionData[questionNumber - 1]['isActive'] = true;
-    tempQuestionData[questionNumber - 1]['isFinished'] = false;
-    tempQuestionData[questionNumber - 1]['answers'] = [0, 0, 0];
+    const response = await fetch('/api/question-data/reset-question', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({questionNumber: questionNumber})});
+    const questionData = await response.json();
     this.setState({
-      questionData: tempQuestionData
+      questionData: questionData,
     });
-    console.log(tempQuestionData);
-    //await fetch('./question-data.json', {method: 'POST', body: tempQuestionData});
   }
 
   render () {

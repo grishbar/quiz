@@ -24,7 +24,7 @@ export default class QuestionOne extends React.Component {
 
     render () {
         const variants = ['Инвестирую в проекты', 'Использую меры государственной поддержки в рамках нац. проектов', 'Изучаю условия участия в нацпроектах'];
-        if (this.props.isActive) {
+        if (this.props.isActive || this.props.isFinished) {
             return (
             <div>
                 <QuestionItem question='В как формате Вы принимаете участие в национальных проектах?'
@@ -32,7 +32,7 @@ export default class QuestionOne extends React.Component {
                     questionState={this.props.questionState} updateAnswers={this.props.updateAnswers}
                     didUserAnswer={this.state.didUserAnswer} getDidUserAnswer={this.getDidUserAnswer}
                     isFinished={this.props.isFinished}/>
-                {this.state.didUserAnswer && <Diagramm answers={this.props.answers} variants={variants}/>}
+                {(this.state.didUserAnswer || this.props.isFinished) && <Diagramm answers={this.props.answers} variants={variants}/>}
             </div>
             )
         } else {
