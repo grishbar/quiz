@@ -23,7 +23,6 @@ export default class Example extends React.Component {
       y: blueData[idx].y
     }));
     const {useCanvas} = this.state;
-    const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
     const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
       <div className="diagramm">
