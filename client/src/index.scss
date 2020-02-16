@@ -191,3 +191,7 @@ input[type="radio"]:checked + .label:after {
   font-weight: bold;
   margin-top: 50px;
 }
+.diagramm {
+  display: flex;
+  justify-content: center;
+}

@@ -26,8 +26,8 @@ export default class Example extends React.Component {
     const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
     const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
-      <div>
-        <XYPlot xType="ordinal" width={300} height={300} xDistance={100}>
+      <div className="diagramm">
+        <XYPlot xType="ordinal" width={Math.max(window.innerWidth/2, 300)} height={500} xDistance={100}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
