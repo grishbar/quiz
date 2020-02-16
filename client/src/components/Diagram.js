@@ -5,9 +5,11 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  HorizontalBarSeries,
-  HorizontalBarSeriesCanvas
+  VerticalBarSeries,
+  VerticalBarSeriesCanvas,
+  LabelSeries
 } from 'react-vis';
+
 
 export default class Example extends React.Component {
   state = {
@@ -15,20 +17,23 @@ export default class Example extends React.Component {
   };
 
   render() {
+    const blueData = [{x: '1', y: this.props.answers[0]}, {x: '2', y: this.props.answers[1]}, {x: '3', y: this.props.answers[2]}];
+    const labelData = blueData.map((d, idx) => ({
+      x: d.x,
+      y: blueData[idx].y
+    }));
     const {useCanvas} = this.state;
-    const BarSeries = useCanvas
-      ? HorizontalBarSeriesCanvas
-      : HorizontalBarSeries;
+    const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
+    const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
       <div>
-        <XYPlot width={700} height={600} stackBy="x" warranty={3}>
+        <XYPlot xType="ordinal" width={300} height={300} xDistance={100}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <BarSeries color="#58aef3" data={[{y: 1, x: this.props.answers[0]}, {y: 2, x: 0}, {y: 3, x: 0}]} />
-          <BarSeries color="#58aef3" data={[{y: 1, x: 0}, {y: 2, x: this.props.answers[1]}, {y: 3, x: 0}]} />
-          <BarSeries color="#58aef3" data={[{y: 1, x: 0}, {y: 2, x: 0}, {y: 3, x: this.props.answers[2]}]} />
+          <BarSeries data={blueData} />
+          <LabelSeries data={labelData} getLabel={d => d.x} />
         </XYPlot>
       </div>
     );

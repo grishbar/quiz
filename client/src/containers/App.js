@@ -84,7 +84,7 @@ export default class App extends React.Component {
     });
   }
 
-  updateQuestionState(question, state){
+  updateQuestionState(question, state) {
     let tempState = this.state.questionState;
     tempState[question] = state;
     this.setState({

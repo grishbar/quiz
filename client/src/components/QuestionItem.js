@@ -18,15 +18,8 @@ export default class QuestionOne extends React.Component {
       event.preventDefault();
       this.props.updateAnswers(this.props.questionNumber, this.state.choosedAnswer);
       this.props.updateQuestionState(this.props.questionNumber, false);
+      localStorage.setItem('didUserAnswer' + this.props.questionNumber, true);
       //сюда дописать сохранение в локальное хранилище пользователя
-    }
-
-    async update(choosedAnswer) {
-        console.log('start post');
-        console.log(this.props.questionNumber);
-        console.log(choosedAnswer);
-        await fetch('/api/question-data/add-answers', {method: 'POST',
-                body: { questionNumber:this.props.questionNumber, choosedAnswer:choosedAnswer }});
     }
     
     render () {
