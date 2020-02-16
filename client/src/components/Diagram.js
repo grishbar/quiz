@@ -31,7 +31,7 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <BarSeries data={blueData} />
+          <BarSeries data={blueData} color="#3399FF"/>
           <LabelSeries data={labelData} getLabel={d => d.x} />
         </XYPlot>
         <div className="diagramm-legends">

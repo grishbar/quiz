@@ -203,3 +203,12 @@ input[type="radio"]:checked + .label:after {
 .diagramm-legends__item {
   margin: 10px 0;
 }
+
+.admin-block-authentication{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
