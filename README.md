@@ -1,6 +1,6 @@
 # Quiz
 
-Небольшой проект для проведения анкетирования среди руководителей предприятий можно посмтреть на [сайте](https://quiz-ekaterinburg.herokuapp.com)
+Небольшой проект для проведения анкетирования среди руководителей предприятий можно посмтреть на [сайте](https://quiz-ekaterinburg.herokuapp.com) управление анкетированием происходит через адмиискую [страничку](https://quiz-ekaterinburg.herokuapp.com/admin) 
 
 ## Available Scripts
 
