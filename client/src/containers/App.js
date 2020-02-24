@@ -159,7 +159,8 @@ export default class App extends React.Component {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/admin">
-              <AdminPage startQuestion={this.startQuestion} endQuestion={this.endQuestion} resetQuestion={this.resetQuestion} />
+              <AdminPage startQuestion={this.startQuestion} endQuestion={this.endQuestion} resetQuestion={this.resetQuestion}
+              questionData={this.state.questionData} />
             </Route>
             <Route path="/question1">
               <QuestionOne answers={this.state.answers[0]} updateQuestionState={this.updateQuestionState}
